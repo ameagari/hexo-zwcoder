@@ -8,9 +8,6 @@ branches:
 cache:
     directories:
         - node_modules
-before_install:
-  - npm install -g hexo
-  - npm install -g hexo-cli
 install:
   - npm install   #安装hexo及插件
 script:
