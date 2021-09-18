@@ -5,16 +5,16 @@
 # Site
 title: 码无止境
 subtitle: ''
-description: ''
-keywords:
+description: 'Zan Wang的个人小站'
+keywords: Java,Blog
 author: Zan Wang
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://blog.zwcoder.com
-permalink: :title/
+permalink: :category/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
