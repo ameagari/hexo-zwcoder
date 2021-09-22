@@ -9,21 +9,21 @@
   <meta name="description" content="Spring是什么？ Spring框架是一个开放源代码的J2EE应用程序框架，由Rod Johnson发起，是针对bean的生命周期进行管理的轻量级容器。 Spring解决了开发者在J2EE开发中遇到的许多常见的问题，提供了功能强大IOC、AOP及Web MVC等功能。Spring框架主要由七部分组成，分别是 Spring Core、 Spring AOP、 Spring ORM、 Spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Framework 原理解析">
-<meta property="og:url" content="http://blog.zwcoder.com/Java/Spring/spring-framework-research/">
+<meta property="og:url" content="http://zanwang.gitee.io/blog/Java/Spring/spring-framework-research/">
 <meta property="og:site_name" content="码无止境">
 <meta property="og:description" content="Spring是什么？ Spring框架是一个开放源代码的J2EE应用程序框架，由Rod Johnson发起，是针对bean的生命周期进行管理的轻量级容器。 Spring解决了开发者在J2EE开发中遇到的许多常见的问题，提供了功能强大IOC、AOP及Web MVC等功能。Spring框架主要由七部分组成，分别是 Spring Core、 Spring AOP、 Spring ORM、 Spring">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-18T07:32:39.000Z">
-<meta property="article:modified_time" content="2021-09-22T12:47:20.324Z">
+<meta property="article:modified_time" content="2021-09-22T13:34:08.329Z">
 <meta property="article:author" content="Zan Wang">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="码无止境" type="application/atom+xml">
+    <link rel="alternate" href="/blog/atom.xml" title="码无止境" type="application/atom+xml">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/blog/favicon.png">
   
   
     
@@ -31,11 +31,11 @@
 
   
   
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/blog/css/style.css">
 
   
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
 
   
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -48,7 +48,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">码无止境</a>
+        <a href="/blog/" id="logo">码无止境</a>
       </h1>
       
     </div>
@@ -56,19 +56,19 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="/blog/">Home</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS 订阅"></a>
         
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.zwcoder.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zanwang.gitee.io/blog"></form>
       </div>
     </div>
   </div>
@@ -77,12 +77,12 @@
       <div class="outer">
         <section id="main"><article id="post-spring-framework-research" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/Java/Spring/spring-framework-research/" class="article-date">
+    <a href="/blog/Java/Spring/spring-framework-research/" class="article-date">
   <time class="dt-published" datetime="2021-09-18T07:32:39.000Z" itemprop="datePublished">2021-09-18</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>►<a class="article-category-link" href="/categories/Java/Spring/">Spring</a>
+    <a class="article-category-link" href="/blog/categories/Java/">Java</a>►<a class="article-category-link" href="/blog/categories/Java/Spring/">Spring</a>
   </div>
 
   </div>
@@ -120,15 +120,24 @@
 <p>实际上，Spring的哲学是《最少的侵入》。<br>从上面几个例子来看，你会发现，Spring实现的这些功能会有许多不同的实现方案，例如容器技术就有历史悠久的EJB，数据库连接就有我们常用的mybatis,Spring Boot对于有固定模板的我们公司来说，压根没用。但同时，我们还会发现，我们可以很轻易的替换掉Spring的功能，因为其Spring的代码侵入量极少。例如Bean管理只需要在配置文件或者类数据定义时编码即可，随时可以自己new一个对象。新版本更是可以通过构造函数来避免使用注解。<br>非侵入式，即允许在应用系统中自由选择和组装Spring框架的各个功能模块，并且不强制要求应用系统的类必须继承或实现Spring框架的类和接口来达到使用框架的目的，使得所开发出来的应用系统能够在不同的运行环境或平台上自由移植，仅需要进行适配修改，而不需要修改核心代码。</p>
 <p>Spring的体系结构</p>
 <p>Spring如何实现非侵入式<br>引用反射机制，通过动态调用的方式来提供各方面的功能，建立核心组件BeanFactory<br>配合使用Spring框架中的BeanWrapper和BeanFactory组件类最终达到对象的实例创建和属性注入</p>
+<h2 id="Tomcat加载Spring-MVC和Spring容器的过程"><a href="#Tomcat加载Spring-MVC和Spring容器的过程" class="headerlink" title="Tomcat加载Spring MVC和Spring容器的过程"></a>Tomcat加载Spring MVC和Spring容器的过程</h2><blockquote>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/top-housekeeper/p/14105297.html#_label2">https://www.cnblogs.com/top-housekeeper/p/14105297.html#_label2</a></p>
+</blockquote>
+<p>一个典型包含spring MVC框架的webapp配置如下所示：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--以下为加载Spring需要的配置--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--Spring配置具体参数的地方--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">param-value</span>&gt;</span></span><br><span class="line">    classpath:applicationContext.xml</span><br><span class="line">  <span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--Spring启动的类--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">&lt;!--以下为加载SpringMVC需要的配置--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>project<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span>   <span class="comment">&lt;!--servlet被加载的顺序，值越小优先级越高（正数）--&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>project<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.html<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们知道，tomcat可以容纳多个webapp，每一个webapp对一个servlet，<br>tomcat根据所有的web.xml配置形成一个索引，根据url进行匹配并发送到对应的servlet，例如在上面的url-pattern为*.html。那么当tomcat接收到对应请求时，便会将请求发送到名为project的servlet。</p>
+<p>从tomcat的生命周期我们可以知道，上面示例中首先会被加载的是ContextLoaderListener，其init方法为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContextLoaderListener</span> <span class="keyword">extends</span> <span class="title">ContextLoader</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span> </span>&#123;</span><br><span class="line">    <span class="comment">//省略其他方法</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Initialize the root web application context.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent event)</span> </span>&#123;</span><br><span class="line">        initWebApplicationContext(event.getServletContext());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>跟踪代码我们可以发现，ContextLoaderListener初始化了一个WebApplicationContext，这便是我们的根applicationContext。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.zwcoder.com/Java/Spring/spring-framework-research/" data-id="cktvi4ito0001pinqc1b99rb9" data-title="Spring Framework 原理解析" class="article-share-link">分享</a>
+      <a data-url="http://zanwang.gitee.io/blog/Java/Spring/spring-framework-research/" data-id="cktvjsh5g0001munqdpm7f8hz" data-title="Spring Framework 原理解析" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Spring/" rel="tag">Spring</a></li></ul>
 
     </footer>
   </div>
@@ -136,7 +145,7 @@
     
 <nav id="article-nav">
   
-    <a href="/uncategorized/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/uncategorized/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
@@ -160,7 +169,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/Spring/">Spring</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Java/Spring/">Spring</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -170,7 +179,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Spring/" rel="tag">Spring</a></li></ul>
     </div>
   </div>
 
@@ -180,7 +189,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a>
+      <a href="/blog/tags/Java/" style="font-size: 10px;">Java</a> <a href="/blog/tags/Spring/" style="font-size: 10px;">Spring</a>
     </div>
   </div>
 
@@ -189,7 +198,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2021/09/">九月 2021</a></li></ul>
     </div>
   </div>
 
@@ -202,11 +211,11 @@
       <ul>
         
           <li>
-            <a href="/uncategorized/hello-world/">Hello World</a>
+            <a href="/blog/uncategorized/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/Java/Spring/spring-framework-research/">Spring Framework 原理解析</a>
+            <a href="/blog/Java/Spring/spring-framework-research/">Spring Framework 原理解析</a>
           </li>
         
       </ul>
@@ -231,25 +240,25 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/blog/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
 
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/blog/js/jquery-3.4.1.min.js"></script>
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-<script src="/js/script.js"></script>
+<script src="/blog/js/script.js"></script>
 
 
 
