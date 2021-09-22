@@ -42,3 +42,54 @@ Spring的体系结构
 Spring如何实现非侵入式
 引用反射机制，通过动态调用的方式来提供各方面的功能，建立核心组件BeanFactory
 配合使用Spring框架中的BeanWrapper和BeanFactory组件类最终达到对象的实例创建和属性注入
+
+## Tomcat加载Spring MVC和Spring容器的过程
+> 参考资料：https://www.cnblogs.com/top-housekeeper/p/14105297.html#_label2
+
+
+一个典型包含spring MVC框架的webapp配置如下所示：
+
+```xml
+<!--以下为加载Spring需要的配置-->
+<!--Spring配置具体参数的地方-->
+<context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>
+    classpath:applicationContext.xml
+  </param-value>
+</context-param>
+<!--Spring启动的类-->
+<listener>
+  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+
+ <!--以下为加载SpringMVC需要的配置-->
+<servlet>
+  <servlet-name>project</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  <load-on-startup>1</load-on-startup>   <!--servlet被加载的顺序，值越小优先级越高（正数）-->
+
+  <servlet-mapping>
+        <servlet-name>project</servlet-name>
+        <url-pattern>*.html</url-pattern>
+  </servlet-mapping>
+</servlet>
+```
+我们知道，tomcat可以容纳多个webapp，每一个webapp对一个servlet，
+tomcat根据所有的web.xml配置形成一个索引，根据url进行匹配并发送到对应的servlet，例如在上面的url-pattern为*.html。那么当tomcat接收到对应请求时，便会将请求发送到名为project的servlet。
+
+从tomcat的生命周期我们可以知道，上面示例中首先会被加载的是ContextLoaderListener，其init方法为
+```java
+public class ContextLoaderListener extends ContextLoader implements ServletContextListener {
+    //省略其他方法
+
+    /**
+     * Initialize the root web application context.
+     */
+    @Override
+    public void contextInitialized(ServletContextEvent event) {
+        initWebApplicationContext(event.getServletContext());
+    }
+}
+```
+跟踪代码我们可以发现，ContextLoaderListener初始化了一个WebApplicationContext，这便是我们的根applicationContext。
