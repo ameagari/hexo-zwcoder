@@ -251,7 +251,7 @@
     "chalk" "^2.0.0"
     "js-tokens" "^4.0.0"
 
-"@babel/parser@^7.15.4", "@babel/parser@^7.15.5":
+"@babel/parser@^7.15.4", "@babel/parser@^7.15.5", "@babel/parser@^7.6.0", "@babel/parser@^7.9.6":
   "integrity" "sha1-DD7UousHsWXfqFs8xFxyczTE7a4="
   "resolved" "https://registry.nlark.com/@babel/parser/download/@babel/parser-7.15.7.tgz"
   "version" "7.15.7"
@@ -878,7 +878,7 @@
     "debug" "^4.1.0"
     "globals" "^11.1.0"
 
-"@babel/types@^7", "@babel/types@^7.15.4", "@babel/types@^7.15.6", "@babel/types@^7.4.4":
+"@babel/types@^7", "@babel/types@^7.15.4", "@babel/types@^7.15.6", "@babel/types@^7.4.4", "@babel/types@^7.6.1", "@babel/types@^7.9.6":
   "integrity" "sha1-mavcSCGLKIHAWN0KerBbmcm+dY8="
   "resolved" "https://registry.nlark.com/@babel/types/download/@babel/types-7.15.6.tgz"
   "version" "7.15.6"
@@ -1003,10 +1003,15 @@
   "resolved" "https://registry.nlark.com/argparse/download/argparse-2.0.1.tgz"
   "version" "2.0.1"
 
-"asap@^2.0.3":
+"asap@^2.0.3", "asap@~2.0.3":
   "integrity" "sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY= sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA=="
   "resolved" "https://registry.nlark.com/asap/download/asap-2.0.6.tgz"
   "version" "2.0.6"
+
+"assert-never@^1.2.1":
+  "integrity" "sha512-TaTivMB6pYI1kXwrFlEhLeGfOqoDNdTxjCdwRfFFkEA30Eu+k48W34nlok2EYWJfFFzqaEmichdNM7th6M5HNw=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/assert-never/-/assert-never-1.2.1.tgz"
+  "version" "1.2.1"
 
 "asynckit@^0.4.0":
   "integrity" "sha1-x57Zf380y48robyXkLzDZkdLS3k="
@@ -1056,6 +1061,13 @@
   "version" "0.2.2"
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.2.2"
+
+"babel-walk@3.0.0-canary-5":
+  "integrity" "sha512-GAwkz0AihzY5bkwIY5QDR+LvsRQgB/B+1foMPvi0FZPMl5fjD7ICiznUiBdLYMH1QYe6vqu4gWYytZOccLouFw=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/babel-walk/-/babel-walk-3.0.0-canary-5.tgz"
+  "version" "3.0.0-canary-5"
+  dependencies:
+    "@babel/types" "^7.9.6"
 
 "balanced-match@^1.0.0":
   "integrity" "sha1-6D46fj8wCzTLnYf2FfoMvzV2kO4="
@@ -1125,7 +1137,7 @@
   "resolved" "https://registry.npm.taobao.org/bytes/download/bytes-3.0.0.tgz"
   "version" "3.0.0"
 
-"call-bind@^1.0.0":
+"call-bind@^1.0.0", "call-bind@^1.0.2":
   "integrity" "sha1-sdTonmiBGcPJqQOtMKuy9qkZvjw="
   "resolved" "https://registry.nlark.com/call-bind/download/call-bind-1.0.2.tgz"
   "version" "1.0.2"
@@ -1162,6 +1174,13 @@
   dependencies:
     "ansi-styles" "^4.1.0"
     "supports-color" "^7.1.0"
+
+"character-parser@^2.2.0":
+  "integrity" "sha1-x84o821LzZdE5f/CxfzeHHMmH8A="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/character-parser/-/character-parser-2.2.0.tgz"
+  "version" "2.2.0"
+  dependencies:
+    "is-regex" "^1.0.3"
 
 "chokidar@^3.0.0", "chokidar@^3.3.0":
   "integrity" "sha1-26OXb8rbAW9m/TZQIdkWANAcHnU="
@@ -1267,6 +1286,14 @@
     "finalhandler" "1.1.2"
     "parseurl" "~1.3.3"
     "utils-merge" "1.0.1"
+
+"constantinople@^4.0.1":
+  "integrity" "sha512-vCrqcSIq4//Gx74TXXCGnHpulY1dskqLTFGDmhrGxzeXL8lF8kvXv6mpNWlJj1uD4DW23D4ljAqbY4RRaaUZIw=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/constantinople/-/constantinople-4.0.1.tgz"
+  "version" "4.0.1"
+  dependencies:
+    "@babel/parser" "^7.6.0"
+    "@babel/types" "^7.6.1"
 
 "convert-source-map@^1.7.0":
   "integrity" "sha1-8zc8MtIbTXgN2ABFFGhPt5HKQ2k="
@@ -1412,6 +1439,11 @@
   "integrity" "sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA= sha512-3NdhDuEXnfun/z7x9GOElY49LoqVHoGScmOKwmxhsS8N5Y+Z8KyPPDnaSzqWgYt/ji4mqwfTS34Htrk0zPIXVg=="
   "resolved" "https://registry.nlark.com/destroy/download/destroy-1.0.4.tgz"
   "version" "1.0.4"
+
+"doctypes@^1.1.0":
+  "integrity" "sha1-6oCxBqh1OHdOijpKWv4pPeSJ4Kk="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/doctypes/-/doctypes-1.1.0.tgz"
+  "version" "1.1.0"
 
 "dom-serializer@^1.0.1":
   "integrity" "sha1-YgZDfTLO767HFhgDIwx6ILwbTZE="
@@ -1667,10 +1699,17 @@
   "resolved" "https://registry.nlark.com/has-flag/download/has-flag-4.0.0.tgz"
   "version" "4.0.0"
 
-"has-symbols@^1.0.1":
+"has-symbols@^1.0.1", "has-symbols@^1.0.2":
   "integrity" "sha1-Fl0wcMADCXUqEjakeTMeOsVvFCM="
   "resolved" "https://registry.nlark.com/has-symbols/download/has-symbols-1.0.2.tgz"
   "version" "1.0.2"
+
+"has-tostringtag@^1.0.0":
+  "integrity" "sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/has-tostringtag/-/has-tostringtag-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "has-symbols" "^1.0.2"
 
 "has@^1.0.3":
   "integrity" "sha1-ci18v8H2qoJB8W3YFOAR4fQeh5Y="
@@ -1814,9 +1853,16 @@
     "jsdom" "^16.7.0"
     "marked" "^2.1.3"
 
-"hexo-renderer-stylus@^2.0.0":
-  "integrity" "sha1-xlVm6X6QWKUuRsgrDEXPVh9LlMs= sha512-1S4AG8RtzWqVrqKIYv2AJ4UYms5SHDjkdYS7IiGwgUejL24agbTktpAbnH2cG1JWZ15SRqYN0UGB9aAoSAgvEA=="
-  "resolved" "https://registry.npm.taobao.org/hexo-renderer-stylus/download/hexo-renderer-stylus-2.0.1.tgz"
+"hexo-renderer-pug@^2.0.0":
+  "integrity" "sha512-5AJpVmPzAuwB6pqtm/bOfaYjjxyc1Ue9hLvJdJwxib3bzVIVm17QWEiT+nYO4lU5Nn75s5WqHh7jPg03cgTgig=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/hexo-renderer-pug/-/hexo-renderer-pug-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "pug" "^3.0.2"
+
+"hexo-renderer-stylus@^2.0.0", "hexo-renderer-stylus@^2.0.1":
+  "integrity" "sha512-1S4AG8RtzWqVrqKIYv2AJ4UYms5SHDjkdYS7IiGwgUejL24agbTktpAbnH2cG1JWZ15SRqYN0UGB9aAoSAgvEA=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/hexo-renderer-stylus/-/hexo-renderer-stylus-2.0.1.tgz"
   "version" "2.0.1"
   dependencies:
     "nib" "^1.1.2"
@@ -2017,6 +2063,14 @@
   "resolved" "https://registry.nlark.com/is-docker/download/is-docker-2.2.1.tgz?cache=0&sync_timestamp=1630451108035&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fis-docker%2Fdownload%2Fis-docker-2.2.1.tgz"
   "version" "2.2.1"
 
+"is-expression@^4.0.0":
+  "integrity" "sha512-zMIXX63sxzG3XrkHkrAPvm/OVZVSCPNkwMHU8oTX7/U3AL78I0QXCEICXUM13BIa8TYGZ68PiTKfQz3yaTNr4A=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/is-expression/-/is-expression-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "acorn" "^7.1.1"
+    "object-assign" "^4.1.1"
+
 "is-extglob@^2.1.1":
   "integrity" "sha1-qIwCU1eR8C7TfHahueqXc8gz+MI="
   "resolved" "https://registry.nlark.com/is-extglob/download/is-extglob-2.1.1.tgz"
@@ -2051,6 +2105,19 @@
   "resolved" "https://registry.npm.taobao.org/is-potential-custom-element-name/download/is-potential-custom-element-name-1.0.1.tgz"
   "version" "1.0.1"
 
+"is-promise@^2.0.0":
+  "integrity" "sha512-+lP4/6lKUBfQjZ2pdxThZvLUAafmZb8OAxFb8XXtiQmS35INgr85hdOGoEs124ez1FCnZJt6jau/T+alh58QFQ=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/is-promise/-/is-promise-2.2.2.tgz"
+  "version" "2.2.2"
+
+"is-regex@^1.0.3":
+  "integrity" "sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/is-regex/-/is-regex-1.1.4.tgz"
+  "version" "1.1.4"
+  dependencies:
+    "call-bind" "^1.0.2"
+    "has-tostringtag" "^1.0.0"
+
 "is-wsl@^2.1.1":
   "integrity" "sha1-dKTHbnfKn9P5MvKQwX6jJs0VcnE="
   "resolved" "https://registry.nlark.com/is-wsl/download/is-wsl-2.2.0.tgz"
@@ -2067,6 +2134,11 @@
   "integrity" "sha1-TkMekrEalzFjaqH5yNHMvP2reN8="
   "resolved" "https://registry.npm.taobao.org/isobject/download/isobject-3.0.1.tgz"
   "version" "3.0.1"
+
+"js-stringify@^1.0.2":
+  "integrity" "sha1-Fzb939lyTyijaCrcYjCufk6Weds="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/js-stringify/-/js-stringify-1.0.2.tgz"
+  "version" "1.0.2"
 
 "js-tokens@^4.0.0":
   "integrity" "sha1-GSA/tZmR35jjoocFDUZHzerzJJk="
@@ -2155,6 +2227,14 @@
   dependencies:
     "jsonparse" "^1.2.0"
     "through" ">=2.2.7 <3"
+
+"jstransformer@1.0.0":
+  "integrity" "sha1-7Yvwkh4vPx7U1cGkT2hwntJHIsM="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/jstransformer/-/jstransformer-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "is-promise" "^2.0.0"
+    "promise" "^7.0.1"
 
 "kind-of@^6.0.2":
   "integrity" "sha1-B8BQNKbDSfoG4k+jWqdttFgM5N0="
@@ -2365,6 +2445,11 @@
   "resolved" "https://registry.nlark.com/nwsapi/download/nwsapi-2.2.0.tgz"
   "version" "2.2.0"
 
+"object-assign@^4.1.1":
+  "integrity" "sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/object-assign/-/object-assign-4.1.1.tgz"
+  "version" "4.1.1"
+
 "object-keys@^1.0.12", "object-keys@^1.1.1":
   "integrity" "sha1-HEfyct8nfzsdrwYWd9nILiMixg4="
   "resolved" "https://registry.nlark.com/object-keys/download/object-keys-1.1.1.tgz"
@@ -2520,10 +2605,120 @@
   "resolved" "https://registry.nlark.com/prismjs/download/prismjs-1.24.1.tgz?cache=0&sync_timestamp=1625313362193&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fprismjs%2Fdownload%2Fprismjs-1.24.1.tgz"
   "version" "1.24.1"
 
+"promise@^7.0.1":
+  "integrity" "sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/promise/-/promise-7.3.1.tgz"
+  "version" "7.3.1"
+  dependencies:
+    "asap" "~2.0.3"
+
 "psl@^1.1.33":
   "integrity" "sha1-kyb4vPsBOtzABf3/BWrM4CDlHCQ= sha512-RIdOzyoavK+hA18OGGWDqUTsCLhtA7IcZ/6NCs4fFJaHBDab+pDDmDIByWFRQJq2Cd7r1OoQxBGKOaztq+hjIQ=="
   "resolved" "https://registry.npm.taobao.org/psl/download/psl-1.8.0.tgz"
   "version" "1.8.0"
+
+"pug-attrs@^3.0.0":
+  "integrity" "sha512-azINV9dUtzPMFQktvTXciNAfAuVh/L/JCl0vtPCwvOA21uZrC08K/UnmrL+SXGEVc1FwzjW62+xw5S/uaLj6cA=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug-attrs/-/pug-attrs-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "constantinople" "^4.0.1"
+    "js-stringify" "^1.0.2"
+    "pug-runtime" "^3.0.0"
+
+"pug-code-gen@^3.0.2":
+  "integrity" "sha512-nJMhW16MbiGRiyR4miDTQMRWDgKplnHyeLvioEJYbk1RsPI3FuA3saEP8uwnTb2nTJEKBU90NFVWJBk4OU5qyg=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug-code-gen/-/pug-code-gen-3.0.2.tgz"
+  "version" "3.0.2"
+  dependencies:
+    "constantinople" "^4.0.1"
+    "doctypes" "^1.1.0"
+    "js-stringify" "^1.0.2"
+    "pug-attrs" "^3.0.0"
+    "pug-error" "^2.0.0"
+    "pug-runtime" "^3.0.0"
+    "void-elements" "^3.1.0"
+    "with" "^7.0.0"
+
+"pug-error@^2.0.0":
+  "integrity" "sha512-sjiUsi9M4RAGHktC1drQfCr5C5eriu24Lfbt4s+7SykztEOwVZtbFk1RRq0tzLxcMxMYTBR+zMQaG07J/btayQ=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug-error/-/pug-error-2.0.0.tgz"
+  "version" "2.0.0"
+
+"pug-filters@^4.0.0":
+  "integrity" "sha512-yeNFtq5Yxmfz0f9z2rMXGw/8/4i1cCFecw/Q7+D0V2DdtII5UvqE12VaZ2AY7ri6o5RNXiweGH79OCq+2RQU4A=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug-filters/-/pug-filters-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "constantinople" "^4.0.1"
+    "jstransformer" "1.0.0"
+    "pug-error" "^2.0.0"
+    "pug-walk" "^2.0.0"
+    "resolve" "^1.15.1"
+
+"pug-lexer@^5.0.1":
+  "integrity" "sha512-0I6C62+keXlZPZkOJeVam9aBLVP2EnbeDw3An+k0/QlqdwH6rv8284nko14Na7c0TtqtogfWXcRoFE4O4Ff20w=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug-lexer/-/pug-lexer-5.0.1.tgz"
+  "version" "5.0.1"
+  dependencies:
+    "character-parser" "^2.2.0"
+    "is-expression" "^4.0.0"
+    "pug-error" "^2.0.0"
+
+"pug-linker@^4.0.0":
+  "integrity" "sha512-gjD1yzp0yxbQqnzBAdlhbgoJL5qIFJw78juN1NpTLt/mfPJ5VgC4BvkoD3G23qKzJtIIXBbcCt6FioLSFLOHdw=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug-linker/-/pug-linker-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "pug-error" "^2.0.0"
+    "pug-walk" "^2.0.0"
+
+"pug-load@^3.0.0":
+  "integrity" "sha512-OCjTEnhLWZBvS4zni/WUMjH2YSUosnsmjGBB1An7CsKQarYSWQ0GCVyd4eQPMFJqZ8w9xgs01QdiZXKVjk92EQ=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug-load/-/pug-load-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "object-assign" "^4.1.1"
+    "pug-walk" "^2.0.0"
+
+"pug-parser@^6.0.0":
+  "integrity" "sha512-ukiYM/9cH6Cml+AOl5kETtM9NR3WulyVP2y4HOU45DyMim1IeP/OOiyEWRr6qk5I5klpsBnbuHpwKmTx6WURnw=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug-parser/-/pug-parser-6.0.0.tgz"
+  "version" "6.0.0"
+  dependencies:
+    "pug-error" "^2.0.0"
+    "token-stream" "1.0.0"
+
+"pug-runtime@^3.0.0", "pug-runtime@^3.0.1":
+  "integrity" "sha512-L50zbvrQ35TkpHwv0G6aLSuueDRwc/97XdY8kL3tOT0FmhgG7UypU3VztfV/LATAvmUfYi4wNxSajhSAeNN+Kg=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug-runtime/-/pug-runtime-3.0.1.tgz"
+  "version" "3.0.1"
+
+"pug-strip-comments@^2.0.0":
+  "integrity" "sha512-zo8DsDpH7eTkPHCXFeAk1xZXJbyoTfdPlNR0bK7rpOMuhBYb0f5qUVCO1xlsitYd3w5FQTK7zpNVKb3rZoUrrQ=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug-strip-comments/-/pug-strip-comments-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "pug-error" "^2.0.0"
+
+"pug-walk@^2.0.0":
+  "integrity" "sha512-yYELe9Q5q9IQhuvqsZNwA5hfPkMJ8u92bQLIMcsMxf/VADjNtEYptU+inlufAFYcWdHlwNfZOEnOOQrZrcyJCQ=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug-walk/-/pug-walk-2.0.0.tgz"
+  "version" "2.0.0"
+
+"pug@^3.0.2":
+  "integrity" "sha512-bp0I/hiK1D1vChHh6EfDxtndHji55XP/ZJKwsRqrz6lRia6ZC2OZbdAymlxdVFwd1L70ebrVJw4/eZ79skrIaw=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/pug/-/pug-3.0.2.tgz"
+  "version" "3.0.2"
+  dependencies:
+    "pug-code-gen" "^3.0.2"
+    "pug-filters" "^4.0.0"
+    "pug-lexer" "^5.0.1"
+    "pug-linker" "^4.0.0"
+    "pug-load" "^3.0.0"
+    "pug-parser" "^6.0.0"
+    "pug-runtime" "^3.0.1"
+    "pug-strip-comments" "^2.0.0"
 
 "punycode@^2.1.0", "punycode@^2.1.1":
   "integrity" "sha1-tYsBCsQMIsVldhbI0sLALHv0eew="
@@ -2595,7 +2790,7 @@
   "resolved" "https://registry.nlark.com/resolve-url/download/resolve-url-0.2.1.tgz"
   "version" "0.2.1"
 
-"resolve@^1.11.0", "resolve@^1.14.2", "resolve@^1.8.1":
+"resolve@^1.11.0", "resolve@^1.14.2", "resolve@^1.15.1", "resolve@^1.8.1":
   "integrity" "sha1-YpoBP7P3B1XW8LeTXMHCxTeLGXU="
   "resolved" "https://registry.nlark.com/resolve/download/resolve-1.20.0.tgz"
   "version" "1.20.0"
@@ -2882,6 +3077,11 @@
   "resolved" "https://registry.npm.taobao.org/toidentifier/download/toidentifier-1.0.0.tgz"
   "version" "1.0.0"
 
+"token-stream@1.0.0":
+  "integrity" "sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/token-stream/-/token-stream-1.0.0.tgz"
+  "version" "1.0.0"
+
 "tough-cookie@^4.0.0":
   "integrity" "sha1-2CIjTuyogvmR8PkIgkrSYi3b7OQ= sha512-tHdtEpQCMrc1YLrMaqXXcj6AxhYi/xgit6mZu1+EDWUn+qhUf8wMQoFIy9NXuq23zAwtcB0t/MjACGR18pcRbg=="
   "resolved" "https://registry.npm.taobao.org/tough-cookie/download/tough-cookie-4.0.0.tgz"
@@ -2965,6 +3165,11 @@
   "resolved" "https://registry.nlark.com/vary/download/vary-1.1.2.tgz"
   "version" "1.1.2"
 
+"void-elements@^3.1.0":
+  "integrity" "sha1-YU9/v42AHwu18GYfWy9XhXUOTwk="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/void-elements/-/void-elements-3.1.0.tgz"
+  "version" "3.1.0"
+
 "w3c-hr-time@^1.0.2":
   "integrity" "sha1-ConN9cwVgi35w2BUNnaWPgzDCM0= sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ=="
   "resolved" "https://registry.nlark.com/w3c-hr-time/download/w3c-hr-time-1.0.2.tgz"
@@ -3028,6 +3233,16 @@
   "version" "2.0.2"
   dependencies:
     "isexe" "^2.0.0"
+
+"with@^7.0.0":
+  "integrity" "sha512-RNGKj82nUPg3g5ygxkQl0R937xLyho1J24ItRCBTr/m1YnZkzJy1hUiHUJrc/VlsDQzsCnInEGSg3bci0Lmd4w=="
+  "resolved" "https://mirrors.huaweicloud.com/repository/npm/with/-/with-7.0.2.tgz"
+  "version" "7.0.2"
+  dependencies:
+    "@babel/parser" "^7.9.6"
+    "@babel/types" "^7.9.6"
+    "assert-never" "^1.2.1"
+    "babel-walk" "3.0.0-canary-5"
 
 "word-wrap@~1.2.3":
   "integrity" "sha1-YQY29rH3A4kb00dxzLF/uTtHB5w="
