@@ -17,6 +17,31 @@
     
     
     <entry>
+      <title>WordPress实现多域名访问</title>
+      <link href="/wordpress/wordpress-multidomian-setting/"/>
+      <url>/wordpress/wordpress-multidomian-setting/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>默认情况下，Wordpress会在安装时自动获取当前的域名或者IP，并与当前访问的端口后组装成URL放在设置字段，用户可以按照需求自行修改。当用户想通过不同的域名来访问该Wordpress时，总会被自动跳转到设置中的URL，因此实现多域名访问需要一定的修改。</p></blockquote><h2 id="常规修改方案"><a href="#常规修改方案" class="headerlink" title="常规修改方案"></a>常规修改方案</h2><p>默认情况下，通过设置-&gt;常规界面可以修改当前站点的WordPress地址（URL）和站点地址（URL），wordpress会固定使用这两个URL地址进行访问，如下图所示。</p><h2 id="使Wordpress支持多域名"><a href="#使Wordpress支持多域名" class="headerlink" title="使Wordpress支持多域名"></a>使Wordpress支持多域名</h2><p>网上很容易搜索到解决方法，大部分帖子提供的方法是修改<strong>wp-config.php</strong>文件，写入以下信息：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">define(&#x27;WP_SITEURL&#x27;, &#x27;http://&#x27; . $_SERVER[&#x27;HTTP_HOST&#x27;]);</span><br><span class="line">define(&#x27;WP_HOME&#x27;, &#x27;http://&#x27; . $_SERVER[&#x27;HTTP_HOST&#x27;]);</span><br></pre></td></tr></table></figure><p>原理说起来其实很简单，通过$_SERVER语法获取当前访问的HOST信息，填入对应的环境变量WP_SITEURL和WP_HOME，这时我们通过任意域名访问后可以发现，在设置中对应的配置已经变成我们当前访问的域名，同时变为灰色且无法修改。但这种简单的脚本缺陷显而易见，不支持HTTPS，如果我们想通过https来访问，会指向http域名，导致出错，这里提供一个可以兼容HTTP和HTTPS的脚本：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$pageURL</span> = <span class="string">&#x27;http&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">&quot;HTTPS&quot;</span>] == <span class="string">&quot;on&quot;</span>) &#123;<span class="variable">$pageURL</span> .= <span class="string">&quot;s&quot;</span>;&#125;</span><br><span class="line"><span class="variable">$pageURL</span> .= <span class="string">&quot;://&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">&quot;SERVER_PORT&quot;</span>] != <span class="string">&quot;80&quot;</span> <span class="keyword">and</span> <span class="variable">$_SERVER</span>[<span class="string">&quot;SERVER_PORT&quot;</span>] != <span class="string">&quot;443&quot;</span>) &#123;</span><br><span class="line">    <span class="variable">$pageURL</span> .= <span class="variable">$_SERVER</span>[<span class="string">&quot;SERVER_NAME&quot;</span>].<span class="string">&quot;:&quot;</span>.<span class="variable">$_SERVER</span>[<span class="string">&quot;SERVER_PORT&quot;</span>];</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable">$pageURL</span> .= <span class="variable">$_SERVER</span>[<span class="string">&quot;SERVER_NAME&quot;</span>];</span><br><span class="line">&#125;</span><br><span class="line">define(<span class="string">&#x27;WP_SITEURL&#x27;</span>, <span class="variable">$pageURL</span>);</span><br><span class="line">define(<span class="string">&#x27;WP_HOME&#x27;</span>, <span class="variable">$pageURL</span>);</span><br></pre></td></tr></table></figure><p>基本原理就是通过解析url，判断是否为https，如果是则动态添加一个”s”到pageURL变量。</p><h3 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h3><p>如下所示，能够完美的支持http，https和端口号配置。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> wordpress </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> wordpress </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring Framework 原理解析</title>
       <link href="/Java/Spring/spring-framework-research/"/>
       <url>/Java/Spring/spring-framework-research/</url>
