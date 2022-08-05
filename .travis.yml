@@ -1,15 +1,11 @@
 sudo: false
 language: node_js
-node_js: stable
+node_js:
+  - 10 # use nodejs v10 LTS
 cache: npm
 branches:
   only:
-    - main # build master branch only
-cache:
-    directories:
-        - node_modules
-install:
-  - npm install   #安装hexo及插件
+    - master # build master branch only
 script:
   - hexo generate # generate static files
 deploy:
@@ -18,5 +14,5 @@ deploy:
   github-token: $GH_TOKEN
   keep-history: true
   on:
-    branch: main
+    branch: master
   local-dir: public
